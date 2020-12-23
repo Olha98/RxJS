@@ -4,8 +4,7 @@ import { Button } from '../Button/Button';
 import { Counter } from '../Counter/Counter';
 import useCountTime from './hooks/useCountTime';
 import { getCreateTime } from '../../common/helpers';
-import styled from 'styled-components';
-import planets from '../../assets/images/planets.jpg'
+import { MaineWrapper, WrapperContent, WrapperBtn } from './AppStyle';
 
 export const App = () => {
   const [currentTime, setCurrentTime] = useState(0);
@@ -17,39 +16,28 @@ export const App = () => {
   return (
     <MaineWrapper>
       <WrapperContent>
-
-      <Counter time={createTime} />
-      <WrapperBtn>
-        <Button
-          onClick={chanceAction}
-          content={count ? 'Stop' : 'Start'}
-          name={count ? 'stop' : 'start'}
-          disabled={false}
-        />
-        <Button onClick={chanceAction} name='wait' disabled={!count} content="Wait" />
-        <Button onClick={chanceAction} name='reset' disabled={!count} content="Reset" />
-      </WrapperBtn>
+        <Counter time={createTime} />
+        <WrapperBtn>
+          <Button
+            onClick={chanceAction}
+            content={count ? 'Stop' : 'Start'}
+            name={count ? 'stop' : 'start'}
+            disabled={false}
+          />
+          <Button
+            onClick={chanceAction}
+            name="wait"
+            disabled={!count}
+            content="Wait"
+          />
+          <Button
+            onClick={chanceAction}
+            name="reset"
+            disabled={!count}
+            content="Reset"
+          />
+        </WrapperBtn>
       </WrapperContent>
     </MaineWrapper>
   );
 };
-
-const MaineWrapper = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100vw;
-height: 100vh;
-overflow: hidden;
-background-image: url(${planets});
-`
-
-const WrapperContent = styled.div`
-display: flex;
-flex-direction: column;
-`
-
-const WrapperBtn = styled.div`
-display: flex;
-justify-content: center;
-`
