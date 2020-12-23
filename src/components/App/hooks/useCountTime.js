@@ -11,7 +11,6 @@ const useCountTime = (setCurrentTime, source$) => {
   }, [count]);
 
   const chanceAction = e => {
-    console.log(e.target.dataset.name);
     const name = e.target.dataset.name;
     switch (name) {
       case 'start':
