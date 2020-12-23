@@ -20,7 +20,7 @@ export const App = () => {
 
   const getCreateTime = () => {
     console.log('getCreateTime');
-    const createTime = new Date(currentTime * 1000).toISOString().substr(11, 8);
+    const createTime = new Date(currentTime * 1000).toISOString().substr(11, 8); 
     console.log(createTime, 'createTime');
     return createTime;
   };
@@ -28,12 +28,23 @@ export const App = () => {
   getCreateTime();
 
   const startTimer = () => {
-    // console.log('startTimer');
+    console.log('startTimer');
     source$.subscribe(setCountTime(true));
   };
 
   const stopTimer = () => {
-    // console.log('stopTimer');
+    console.log('stopTimer');
+    source$.subscribe(setCountTime(false));
+  };
+
+  const waitTimer = () => {
+    console.log('waitTimer');
+    source$.subscribe(setCountTime(false));
+  };
+
+  const resetTimer = () => {
+    console.log('resetTimer');
+    source$.subscribe(setCurrentTime(0));
     source$.subscribe(setCountTime(false));
   };
 
@@ -43,8 +54,8 @@ export const App = () => {
       <button className="start" onClick={count ? stopTimer : startTimer}>
         {count ? 'Stop' : 'Start'}
       </button>
-      <button className="wait">Wait</button>
-      <button className="reset">Reset</button>
+      <button className="wait" onClick={waitTimer} disabled={!count}>Wait</button>
+      <button className="reset" onClick={resetTimer} disabled={!count}>Reset</button>
     </div>
   );
 };
